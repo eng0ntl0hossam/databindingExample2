@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="contact"
+            type="com.example.eng_hossam.databindingexample2.Contact" />
+
+        <variable
+            name="clickHandler"
+            type="com.example.eng_hossam.databindingexample2.MainActivity.ClickHandler" />
+
+        <import type="android.text.TextUtils" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="55dp"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{contact.firstname}"
+            android:textSize="18dp"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{contact.lastname}"
+            android:textSize="18dp"
+            android:textStyle="bold"
+
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp"
+            android:onClick="@{(v)->clickHandler.simpleButtonClick(v)}"
+
+            android:text="Simple Click"
+
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp"
+            android:onLongClick="@{clickHandler::simpleButtonLongClick}"
+            android:text="Simple Long Click" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp"
+            android:onClick="@{(v)->clickHandler.simpleButtonLongClickWithParam(v,contact)}"
+            android:text="Simple  Click with params" />
+
+
+    </LinearLayout>
+</layout>
